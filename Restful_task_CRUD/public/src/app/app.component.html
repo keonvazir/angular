@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Restful Tasks Crud</title>
+</head>
+<body>
+  <div class="container">
+    <h1>CRUD Practice</h1>
+    <div class="allTasks">
+      <button (click)="getTasksFromService()">Get all Tasks</button>
+      <p *ngFor="let task of tasks">{{task.title}} - {{task.description}}</p>
+    </div>
+    <form (submit)="onSubmit()">
+      <p>{{ newTask | json}}</p>
+      <p>Title: <input type="text" name="title" [(ngModel)]="newTask.title"/></p>
+      <p>description: <input type="text" name="description" [(ngModel)]="newTask.description"/></p>
+      <input type="submit" value="Create Task"/>
+    </form>
+  </div>
+  <div class="show">
+    <h1>Task List</h1>
+    <div *ngFor="let task of tasks">
+      <p>{{task.title}}<button id="edit" (click)="editForm(task)">EDIT</button></p>
+      <p>{{task.description}}<button id="delete" (click)="onDelete(task)">DELETE</button></p>
+    </div>
+  </div>
+  <div class="editForm">
+     <div *ngIf="editTog"> 
+      <h1>Edit the Task</h1>
+      <form (submit)="onEdit()">
+        <p><input type="text" name="editTask.title" [(ngModel)]="editTask.title"></p>
+        <p><input type="text" name="editTask.description" [(ngModel)]="editTask.description"></p>
+        <input type="submit" value="Edit"/>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>
