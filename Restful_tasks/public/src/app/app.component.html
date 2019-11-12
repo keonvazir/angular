@@ -5,11 +5,120 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 </head>
 <body>
-  <div class="container">
+
     <h1>Keon's App</h1>
-    <h2>{{title}}</h2>
+    <div ng-app="myApp" ng-controller="myCtrl"> 
+
+        <p>The time is:</p>
+        
+        <h1>{{theTime}}</h1>
+        
+        </div>
+        
+        <p>The $interval service runs a function every specified millisecond.</p>
+        
+        <div ng-app="myApp" ng-controller="myCtrl">
+
+            <button ng-click="myFunc()">Click Me!</button>
+            
+            <div ng-show="showMe">
+                <h1>Menu:</h1>
+                <div>Pizza</div>
+                <div>Pasta</div>
+                <div>Pesce</div>
+            </div>
+            
+            </div>
+           
+            
+            <p>Click the button to show/hide the menu.</p>
+    <!-- <div ng-app="myApp" ng-controller="myCtrl">
+
+        First Name: <input type="text" ng-model="firstName"><br>
+        Last Name: <input type="text" ng-model="lastName"><br>
+        <br>
+        Full Name: {{firstName + " " + lastName}}
+        
+        </div><br><br> -->
+
+    
+        <div ng-app="App" ng-controller="show">
+
+            <input ng-model="name">
+            
+            <h3>My favorite quote is {{name}}</h3>
+        
+          </div>
+          <div ng-app="" ng-init="mySwitch=true">
+              <p>
+              <button ng-disabled="mySwitch">Click Me!</button>
+              </p>
+              <p>
+              <input type="checkbox" ng-model="mySwitch"/>Button
+              </p>
+              <p>
+              {{ mySwitch }}
+              </p>
+              </div> 
+              
+              <div ng-app="countApp" ng-controller="Ctrl">
+
+                  <h1 ng-mousemove="count = count + 1">Mouse Over Me!</h1>
+                  
+                  <h2>{{ count }}</h2>
+                  
+                  </div>
+                
+            <script> 
+            //show and hide button
+              var app = angular.module('myApp', []);
+            app.controller('myCtrl', function($scope) {
+                $scope.showMe = false;
+                $scope.myFunc = function() {
+                    $scope.showMe = !$scope.showMe;
+                }
+            });
+            
+            //mouse count
+            var app = angular.module('countApp', []);
+                  app.controller('Ctrl', function($scope) {
+                      $scope.count = 0;
+                  });
+            //fill in name
+            var app = angular.module('App', []);
+                    app.controller('show', function($scope) {
+                    $scope.name = "John Doe";
+                    });
+             //current time countup seconds       
+            var app = angular.module('myApp', []);
+                  app.controller('myCtrl', function($scope, $interval) {
+                    $scope.theTime = new Date().toLocaleTimeString();
+                    $interval(function () {
+                        $scope.theTime = new Date().toLocaleTimeString();
+                    }, 1000);
+                  });
+          //only last one works, make sure each one is running
+
+                  </script>
+              
+              <!-- <p>The list will only consists of names matching the filter.</p> -->
+              
+              
+        <!-- <script>
+        var app = angular.module('myApp', []);
+        app.controller('myCtrl', function($scope) {
+            $scope.name = "John Doe";
+            $scope.firstName = "John";
+            $scope.lastName = "Doe";
+            
+        });
+        </script>  -->
+
+
+    <!-- <h2>{{title}}</h2>
     <button (click)="getTasksFromService()" >Get All Tasks</button>
   </div>
   <div *ngFor="let task of tasks; let idx = index">
@@ -17,8 +126,7 @@
   </div>
   <div class="info" *ngIf="green">
     <p>{{task.title}}</p>
-    <p>{{task.description}}</p>
+    <p>{{task.description}}</p> -->
 
-  </div>
 </body>
 </html>

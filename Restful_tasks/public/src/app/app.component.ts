@@ -11,11 +11,13 @@ export class AppComponent implements OnInit {
   title = 'app';
   tasks = [];
   task ="";
+  newTask: any;
   description = String;
   green = false;
 
   ngOnInit(){
-
+    this.getTasksFromService()
+    this.newTask = { title: "", description: "" }
   }
 
   getTasksFromService(){
