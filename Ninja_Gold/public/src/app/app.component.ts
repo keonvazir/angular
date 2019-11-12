@@ -19,5 +19,9 @@ export class AppComponent{
 
 
   }
+  resetGold(){
+    this.gold = 0;
+    this.messages = [];
+  }
   
 }
