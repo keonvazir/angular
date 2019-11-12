@@ -10,48 +10,36 @@
 <body>
 
     <h1>Keon's App</h1>
+    <!--Display live time-->
     <div ng-app="myApp" ng-controller="myCtrl"> 
-
         <p>The time is:</p>
-        
         <h1>{{theTime}}</h1>
-        
         </div>
-        
         <p>The $interval service runs a function every specified millisecond.</p>
-        
+        <!--Show and Hide button-->
         <div ng-app="myApp" ng-controller="myCtrl">
-
             <button ng-click="myFunc()">Click Me!</button>
-            
             <div ng-show="showMe">
-                <h1>Menu:</h1>
-                <div>Pizza</div>
-                <div>Pasta</div>
+                <h1>Tasks:</h1>
+                <div>New Event</div>
+                <div>Key</div>
                 <div>Pesce</div>
             </div>
-            
             </div>
-           
-            
             <p>Click the button to show/hide the menu.</p>
-    <!-- <div ng-app="myApp" ng-controller="myCtrl">
-
-        First Name: <input type="text" ng-model="firstName"><br>
-        Last Name: <input type="text" ng-model="lastName"><br>
-        <br>
-        Full Name: {{firstName + " " + lastName}}
-        
-        </div><br><br> -->
-
-    
+    <!--Quote-->
         <div ng-app="App" ng-controller="show">
-
             <input ng-model="name">
-            
             <h3>My favorite quote is {{name}}</h3>
-        
           </div>
+    <!--Enter name-->
+          <div ng-app="">
+              <form>
+                First Name: <input type="text" ng-model="firstname">
+              </form>
+              <h1>You entered: {{firstname}}</h1>
+            </div>
+      <!--button switch-->  
           <div ng-app="" ng-init="mySwitch=true">
               <p>
               <button ng-disabled="mySwitch">Click Me!</button>
@@ -63,13 +51,10 @@
               {{ mySwitch }}
               </p>
               </div> 
-              
+        <!--mouse counter-->
               <div ng-app="countApp" ng-controller="Ctrl">
-
                   <h1 ng-mousemove="count = count + 1">Mouse Over Me!</h1>
-                  
                   <h2>{{ count }}</h2>
-                  
                   </div>
                 
             <script> 
@@ -81,7 +66,6 @@
                     $scope.showMe = !$scope.showMe;
                 }
             });
-            
             //mouse count
             var app = angular.module('countApp', []);
                   app.controller('Ctrl', function($scope) {
@@ -101,21 +85,7 @@
                     }, 1000);
                   });
           //only last one works, make sure each one is running
-
-                  </script>
-              
-              <!-- <p>The list will only consists of names matching the filter.</p> -->
-              
-              
-        <!-- <script>
-        var app = angular.module('myApp', []);
-        app.controller('myCtrl', function($scope) {
-            $scope.name = "John Doe";
-            $scope.firstName = "John";
-            $scope.lastName = "Doe";
-            
-        });
-        </script>  -->
+            </script>
 
 
     <!-- <h2>{{title}}</h2>
