@@ -1,10 +1,23 @@
-import { Component } from '@angular/core';
+import { Component} from '@angular/core';
+// import { HttpService } from './http.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'public';
+  gold= 0;
+  messages= [];
+
+  addGold(min, max, loc){
+    let num = Math.floor(Math.random()* (max-min)+min);
+    this.gold += num;
+
+    this.messages.push("You have earned "+ num + " gold " + loc);
+
+
+  }
+  
 }

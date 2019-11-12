@@ -8,8 +8,8 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'public';
-  tasks;
-  task = "";
+  tasks: any;
+  task : any;
   newTask: any;
   editTask: any;
   editTog: boolean = false;
@@ -19,14 +19,15 @@ export class AppComponent implements OnInit {
   }
   ngOnInit(){
     // this.getTasksFromService()
+    this.task = { "title": "", "description": "" }
     this.newTask = {title: "", description: ""}
   }
 
   getTasksFromService(){
     let observable = this._httpService.getTasks();
-    observable.subscribe(data =>{
+    observable.subscribe((data) =>{
       console.log("~*******************************************~", data);
-      this.tasks = data
+      this.tasks = data;
     });
   }
   onSubmit() {
