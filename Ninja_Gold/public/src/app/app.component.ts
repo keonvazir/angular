@@ -15,7 +15,7 @@ export class AppComponent{
     let num = Math.floor(Math.random()* (max-min)+min);
     this.gold += num;
 
-    this.messages.push("You have earned "+ num + " gold " + loc);
+    this.messages.unshift("You have earned "+ num + " gold " + loc);
 
 
   }

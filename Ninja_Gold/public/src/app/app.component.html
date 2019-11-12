@@ -1,7 +1,7 @@
 <div class="container">
   <h1>Ninja Gold</h1>
   <div class="count">
-      <p><strong>Component 0</strong></p>
+      <p><strong>Component {{title}}</strong></p>
       <hr>
       <h1>Gold Count: {{gold}}</h1>
       <hr>
@@ -15,28 +15,28 @@
     <div class="farm">
       <h3>Farm</h3>
       <p>Earns - Gold</p>
-      <button (click)="addGold(2,5, 'farm')">get gold</button>
+      <button (click)="addGold(2,5, 'farm')" class="btn">get gold</button>
     </div>
     <div class="cave">
       <h3>Cave</h3>
       <p>Earns - Gold</p>
-      <button (click)="addGold(5,10, 'cave')">get gold</button>
+      <button (click)="addGold(5,10, 'cave')" class="btn">get gold</button>
     </div>
     <div class="casino">
       <h3>Casino</h3>
       <p>Earns - Gold</p>
-      <button (click)="addGold(-100, 100, 'casino')">get gold</button>
+      <button (click)="addGold(-100, 100, 'casino')"  class="btn">get gold</button>
     </div>
     <div class="house">
       <h3>House</h3>
       <p>Earns - Gold</p>
-      <button (click)="addGold(7, 15, 'house')">get gold</button>
+      <button (click)="addGold(7, 15, 'house')"  class="btn">get gold</button>
     </div>
   </div><br><br>
   <div class="messages">
     <h3>Message Board</h3>
     <hr>
-    <p *ngFor="let message of messages">{{message}}</p>
+    <p class="msg" *ngFor="let message of messages">{{message}}</p>
   </div>
 
 </div>
