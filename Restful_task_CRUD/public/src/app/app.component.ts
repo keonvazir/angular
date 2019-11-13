@@ -7,7 +7,7 @@ import { HttpService } from './http.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-  title = 'public';
+  title = '';
   tasks: any;
   task : any;
   newTask: any;
@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
     
     this.task = { "title": "", "description": "" }
     this.newTask = {"title": "", "description": ""}
-    this.getTasksFromService();
+    // this.getTasksFromService();
   }
 
   getTasksFromService(){
@@ -30,15 +30,15 @@ export class AppComponent implements OnInit {
     observable.subscribe((data) =>{
       console.log("~*******************************************~", data);
       this.tasks = data;
-    });
+    })
   }
-  do(event: any){
-    console.log(event);
-  }
+  // do(event: any){
+  //   console.log(event);
+  // }
 
   getOneTaskFromService(id: String){
     let observable = this._httpService.getTasksById(id)
-    observable.subscribe(data=>{
+    observable.subscribe((data)=>{
       console.log(data);
       this.selectedTask = data;
     })
@@ -49,32 +49,26 @@ export class AppComponent implements OnInit {
     observable.subscribe((data)=>{
       this.task = data;
       console.log(data);
+  
     })
   }
 
   onSubmit() {
     let observable = this._httpService.addTask(this.newTask);
-    observable.subscribe(data =>{
+    observable.subscribe((data) =>{
       console.log("~Create~");
       this.newTask = { title: "", description: "" }
       this.getTasksFromService();
     })
   }
   submitUpdate(){
-    let observable = this._httpService.editTask(this.task);
+    let observable = this._httpService.updateTask(this.task);
     observable.subscribe((data)=>{
-      this.newTask = {"title": "", "description": ""}
+      this.newTask = {title: "", description: ""}
       this.getTasksFromService();
     })
   }
   
-  onEdit(){
-    let observable = this._httpService.editTask(this.editTask);
-    observable.subscribe(data => {
-      console.log("~Edit~");
-      this.getTasksFromService();
-    })
-  }
   onDelete(task){
     let observable = this._httpService.deleteTask(task);
     observable.subscribe(data => {

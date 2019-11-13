@@ -12,20 +12,20 @@ export class HttpService {
     return this._http.get("/tasks");
   }
 
-  getOneTask(task_id){
-    return this._http.get('/tasks/'+ task_id)
-  }
+  // getOneTask(task_id){
+  //   return this._http.get('/tasks/'+ task_id)
+  // }
 
   getTasksById(id: String){
     return this._http.get(`/tasks/${id}`);
   }
 
   addTask(newTask){
-    return this._http.post("/task", newTask)
+    return this._http.post("/tasks", newTask)
   }
 
-  editTask(task){
-    return this._http.put(`/tasks/${task.id}`, task);
+  updateTask(tasks){
+    return this._http.put(`/tasks/${tasks._id}`, tasks)
   }
 
   deleteTask(id: String){
