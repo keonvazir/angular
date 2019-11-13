@@ -35,7 +35,7 @@
       {{task.description}}</p>
       <button class="btn btn-info btn-sm" (click)="getOneToUpdate(task._id)">EDIT</button>
       <button class="btn btn-danger btn-sm ml-3" (click)="onDelete(task._id)">DELETE</button>
-      <!-- <button class="btn btn-danger btn-sm ml-3" (click)="showTask(task._id)">Show</button> -->
+      <button class="btn btn-danger btn-sm ml-3" (click)="showTask(task._id)">Show</button>
       
       <hr>
       </div>
@@ -51,7 +51,7 @@
         <input type="submit" value="Edit"/>
       </form>
     
-   <!-- <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task>  -->
+   <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task> 
   </div>
 
 </body>
