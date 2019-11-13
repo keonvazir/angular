@@ -15,21 +15,21 @@ export class HttpService {
   getOneTask(task_id){
     return this._http.get('/tasks/'+ task_id)
   }
-  
-  getTasksById(_id:string){
-    return this._http.get("/tasks/:_id");
+
+  getTasksById(id: String){
+    return this._http.get(`/tasks/${id}`);
   }
 
-  addTask(newtask){
-    return this._http.post("/tasks", newtask)
+  addTask(newTask){
+    return this._http.post("/task", newTask)
   }
 
-  editTask(editTask){
-    return this._http.put("/tasks/:_id", editTask);
+  editTask(task){
+    return this._http.put(`/tasks/${task.id}`, task);
   }
 
-  deleteTask(task){
-    return this._http.delete("/tasks/:_id", task);
+  deleteTask(id: String){
+    return this._http.delete(`/tasks/${id}`);
   }
 
 }

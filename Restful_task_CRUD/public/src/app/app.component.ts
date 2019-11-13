@@ -11,17 +11,18 @@ export class AppComponent implements OnInit {
   tasks: any;
   task : any;
   newTask: any;
-  currentTask = false;
-  editTask: any;
+  // currentTask = false;
+  // editTask: any;
   selectedTask: any;
 
   constructor(private _httpService: HttpService){
 
   }
   ngOnInit(){
-    // this.getTasksFromService()
+    
     this.task = { "title": "", "description": "" }
-    this.newTask = {title: "", description: ""}
+    this.newTask = {"title": "", "description": ""}
+    this.getTasksFromService();
   }
 
   getTasksFromService(){
@@ -31,13 +32,26 @@ export class AppComponent implements OnInit {
       this.tasks = data;
     });
   }
-  getOneTaskFromService(id){
-    let observable = this._httpService.getOneTask(id)
+  do(event: any){
+    console.log(event);
+  }
+
+  getOneTaskFromService(id: String){
+    let observable = this._httpService.getTasksById(id)
     observable.subscribe(data=>{
-      console.log(data)
-      this.currentTask = data[0];
+      console.log(data);
+      this.selectedTask = data;
     })
   }
+
+  getOneToUpdate(id: String){
+    let observable = this._httpService.getTasksById(id);
+    observable.subscribe((data)=>{
+      this.task = data;
+      console.log(data);
+    })
+  }
+
   onSubmit() {
     let observable = this._httpService.addTask(this.newTask);
     observable.subscribe(data =>{
@@ -46,14 +60,18 @@ export class AppComponent implements OnInit {
       this.getTasksFromService();
     })
   }
-  editForm(task){
-    this.editTask = {_id: task._id, title: task.title, description: task.description}
+  submitUpdate(){
+    let observable = this._httpService.editTask(this.task);
+    observable.subscribe((data)=>{
+      this.newTask = {"title": "", "description": ""}
+      this.getTasksFromService();
+    })
   }
+  
   onEdit(){
     let observable = this._httpService.editTask(this.editTask);
     observable.subscribe(data => {
       console.log("~Edit~");
-      this.editTog = false;
       this.getTasksFromService();
     })
   }
