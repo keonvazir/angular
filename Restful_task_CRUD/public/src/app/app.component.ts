@@ -32,9 +32,9 @@ export class AppComponent implements OnInit {
       this.tasks = data;
     })
   }
-  // do(event: any){
-  //   console.log(event);
-  // }
+  do(event: any){
+    console.log(event);
+  }
 
   getOneTaskFromService(id: String){
     let observable = this._httpService.getTasksById(id)
