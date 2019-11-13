@@ -7,35 +7,51 @@
   <title>Restful Tasks Crud</title>
 </head>
 <body>
-  <div class="container">
-    <h1>CRUD Practice</h1>
+  <div class="container p-3">
+    <h1 class="text-center">CRUD Practice</h1>
     <div class="allTasks">
       <button (click)="getTasksFromService()">Get all Tasks</button>
       <p *ngFor="let task of tasks">{{task.title}} - {{task.description}}</p>
     </div>
-    <form (submit)="onSubmit()">
+
+    <div class="form-group">
+    <form (submit)="onSubmit()" class="col-6">
       <p>{{ newTask | json}}</p>
-      <p>Title: <input type="text" name="title" [(ngModel)]="newTask.title"/></p>
-      <p>description: <input type="text" name="description" [(ngModel)]="newTask.description"/></p>
-      <input type="submit" value="Create Task"/>
+      <p>Title: <input class="form-control" type="text" name="newTask.title" [(ngModel)]="newTask.title"/></p>
+      <p>description: <input class="form-control" type="text" name="newTask.description" [(ngModel)]="newTask.description"/></p>
+      <input class="form-control" type="submit" value="Create Task"/>
     </form>
   </div>
-  <div class="show">
-    <h1>Task List</h1>
+  </div>
+
+  <div class="form-group">
+    <h1 class="text-center">Task List</h1>
+    <div class="row"></div>
     <div *ngFor="let task of tasks">
-      <p>{{task.title}}<button id="edit" (click)="editForm(task)">EDIT</button></p>
-      <p>{{task.description}}<button id="delete" (click)="onDelete(task)">DELETE</button></p>
+      <div class="col-6 mt-3">
+        <div class="card" style="width: 18rem;">
+      <hr>
+      <p><strong>{{task.title}}</strong>
+      {{task.description}}</p>
+      <button class="btn btn-info btn-sm" (click)="editForm(task._id)">EDIT</button>
+      <button class="btn btn-danger btn-sm ml-3" (click)="onDelete(task._id)">DELETE</button>
+      
+      <hr>
+      </div>
+      </div>
     </div>
   </div>
+
   <div class="editForm">
      <div *ngIf="editTog"> 
       <h1>Edit the Task</h1>
       <form (submit)="onEdit()">
-        <p><input type="text" name="editTask.title" [(ngModel)]="editTask.title"></p>
-        <p><input type="text" name="editTask.description" [(ngModel)]="editTask.description"></p>
+        <p><input class="form-control" type="text" name="newTask.title" [(ngModel)]="task.title"></p>
+        <p><input class="form-control" type="text" name="newTask.description" [(ngModel)]="task.description"></p>
         <input type="submit" value="Edit"/>
       </form>
     </div>
+    <app-task *ngIf="selectedTask" [taskToShow]="selectedTask"></app-task> 
   </div>
 
 </body>

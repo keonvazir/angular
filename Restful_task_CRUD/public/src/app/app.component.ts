@@ -11,8 +11,9 @@ export class AppComponent implements OnInit {
   tasks: any;
   task : any;
   newTask: any;
+  currentTask = false;
   editTask: any;
-  editTog: boolean = false;
+  selectedTask: any;
 
   constructor(private _httpService: HttpService){
 
@@ -29,6 +30,13 @@ export class AppComponent implements OnInit {
       console.log("~*******************************************~", data);
       this.tasks = data;
     });
+  }
+  getOneTaskFromService(id){
+    let observable = this._httpService.getOneTask(id)
+    observable.subscribe(data=>{
+      console.log(data)
+      this.currentTask = data[0];
+    })
   }
   onSubmit() {
     let observable = this._httpService.addTask(this.newTask);

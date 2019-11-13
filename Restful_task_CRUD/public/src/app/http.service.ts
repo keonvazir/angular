@@ -12,6 +12,10 @@ export class HttpService {
     return this._http.get("/tasks");
   }
 
+  getOneTask(task_id){
+    return this._http.get('/tasks/'+ task_id)
+  }
+  
   getTasksById(_id:string){
     return this._http.get("/tasks/:_id");
   }
