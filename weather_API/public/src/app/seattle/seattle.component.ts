@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from './../http.service';
 
 @Component({
   selector: 'app-seattle',
@@ -6,10 +7,26 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./seattle.component.css']
 })
 export class SeattleComponent implements OnInit {
+  weather: any;
+  temp: any;
+  maxTemp: any;
+  minTemp: any;
+  humidity: any;
+  wind: any;
+  clouds: any;
 
-  constructor() { }
+  constructor(private _httpService: HttpService) { }
 
   ngOnInit() {
+    this.getSeattleWeather();
+  }
+  getSeattleWeather(){
+    this._httpService.getWeather("Seattle")
+    .then(data =>{
+      this.weather = data;
+      console.log(data)
+    })
+    .catch(err=>console.log(err))
+  }
   }
 
-}
