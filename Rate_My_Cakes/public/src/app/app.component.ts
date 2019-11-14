@@ -17,6 +17,38 @@ export class AppComponent implements OnInit{
   constructor(private _httpService: HttpService){}
 
   ngOnInit(){
-
+    this.getCakesFromService()
+    this.newCake = {baker: "", image: ""}
+  }
+  getCakesFromService(){
+    let observable = this._httpService.getCakes();
+    observable.subscribe((data)=>{
+      console.log("~All Cakes~", data)
+      this.cakes = data["cake"]
+    });
+  }
+  cakeSubmit(){
+    let observable = this._httpService.addCake(this.newCake);
+    observable.subscribe((data)=>{
+      console.log("~create Cake!~");
+    })
+    this.newCake = {baker: "", image: ""}
+    this.getCakesFromService();
+  }
+  ratingSubmit(cakeId){
+    let observable = this._httpService.addRating(this.newRating, cakeId);
+    observable.subscribe((data)=>{
+      console.log("~add rating to Cake!~");
+    })
+    this.newRating = {rating: "", comment: ""}
+    this.getCakesFromService();
+  }
+  info(idx){
+    this.selectedCake = this.cakes[idx];
+    var sum = 0;
+    for(var i=0; i<this.selectedCake.ratings.length; i++){
+      sum += this.selectedCake.ratings[i].rating;
+    }
+    this.avg = sum/this.selectedCake.ratings.length;
   }
 }
