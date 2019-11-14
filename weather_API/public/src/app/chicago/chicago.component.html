@@ -1,1 +1,13 @@
-<p>chicago works!</p>
+<h1 class="text-center">Chicago, IL</h1>
+<div class="row">
+    <div class="col-6" *ngIf="weather!=undefined">
+        <p> Humidity: {{ weather.main.humidity }}</p>
+        <p> Temperature: {{ weather.main.temp }}</p>
+        <p> Temperature (High): {{ weather.main.temp_max }}</p>
+        <p> Temperature (Low): {{ weather.main.temp_min }}</p>
+        <p> Status: {{ weather.weather[0].description }}</p>
+    </div>
+    <div class="col-6">
+        <img width="50px" height="50px"class="img-thumbnail" src="https://s3-prod.chicagobusiness.com/GettyImages-1057157166.jpg" alt="">
+    </div>
+</div>
