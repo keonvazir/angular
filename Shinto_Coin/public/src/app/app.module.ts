@@ -10,6 +10,11 @@ import { MineComponent } from './mine/mine.component';
 import { SellComponent } from './sell/sell.component';
 import { TransactionComponent } from './transaction/transaction.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { FormsModule } from '@angular/forms';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +23,16 @@ import { TransactionComponent } from './transaction/transaction.component';
     LedgerComponent,
     MineComponent,
     SellComponent,
-    TransactionComponent
+    TransactionComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
