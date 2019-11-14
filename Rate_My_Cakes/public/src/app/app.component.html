@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Rate My Cakes</h1>
+  <div class="top">
+    <div class="leftpanel">
+      <h2>Submit a cake to be rated ...</h2>
+      <hr>
+      <form (submit)="cakeSubmit()">
+        <h3>Baker Name:</h3>
+        <h3><input type="text" name="newCake.baker" [(ngModel)]="newCake.baker"/></h3>
+        <h3>Image URL: </h3>
+        <h3><input type="text" name="newCake.image" [(ngModel)]="newCake.image"/></h3>
+        <input type="submit" value="Submit"/>
+      </form>
+    </div>
+    <div class="rightpanel">
+      <div *ngFor="let cake of cakes; let idx = index">
+        
+      </div>
+    </div>
+  </div>
+
+
+</div><!--end of container-->
