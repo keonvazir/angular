@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HttpService {
 
-  constructor(private _http) { }
+  constructor(private _http: HttpClient) { }
 
   getCakes(){
     return this._http.get("/cakes");
