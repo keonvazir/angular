@@ -21,4 +21,25 @@ export class HttpService {
     }
     this.journal.push(trans);
   }
+  buyCoin(qty): void{
+    this.yourCoins += qty;
+    this.coinValue += qty;
+    this.coinTrans('Bought', qty)
+  }
+  sellCoin(qty): void{
+    if(this.yourCoins >= qty){
+      this.yourCoins -= qty;
+      this.coinValue -= qty;
+      this.coinTrans('Sold', qty)
+    }
+    else{
+      console.log("Not enough coins");
+    }
+  }
+  findTrans(id){
+    this.trans = this.journal.find(o => o.id == id);
+  }
+  getTrivia(){
+    return this._http.get('https://opentdb.com/api.php?amount=50&difficulty=hard&type=multiple')
+  }
 }
