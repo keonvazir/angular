@@ -14,8 +14,26 @@
     </div>
     <div class="rightpanel">
       <div *ngFor="let cake of cakes; let idx = index">
-        
+        <div class="img">
+          <a (click)="info(idx)"><img class="pic" [src]="cake.image"/></a>
+        </div>
+        <div class="formBox">
+          <form (submit)="ratingSubmit(cake._id)">
+            <select name="newRating.rating" [(ngModel)]="newRating.rating">
+              <option value="1" selected>1 star</option>
+              <option value="2">2 stars</option>
+              <option value="3">3 stars</option>
+              <option value="4">4 stars</option>
+              <option value="5">5 stars</option>
+            </select>
+            <textarea name="newRating.comment" [(ngModel)]="newRating.comment"></textarea>
+            <input type="submit" value="Rate!"/>
+          </form>
+        </div>
       </div>
+    </div>
+    <div class="bottom">
+      <app-cake *ngIf="selectedCake" [cakesToShow]="selectedCake" [avgRating]="avg"></app-cake>
     </div>
   </div>
 
