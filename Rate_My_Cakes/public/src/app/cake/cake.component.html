@@ -1,1 +1,11 @@
-<p>cake works!</p>
+<h1>Baked by {{cakesToShow.baker}}</h1>
+<div class="imgbox">
+    <img class="pic2" [src]="cakesToShow.image"/>
+</div>
+<div class="info">
+    <h3>Average rating: {{avgRating}}</h3>
+    <div *ngFor="let review of cakesToShow.ratings; let idx = index">
+        <h3>{{review.rating}}</h3>
+        <h3>{{review.comment}}</h3>
+    </div>
+</div>
