@@ -10,6 +10,11 @@ import { DcComponent } from './dc/dc.component';
 import { SanJoseComponent } from './san-jose/san-jose.component';
 import { ChicagoComponent } from './chicago/chicago.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { HttpService } from './http.service';
+import { FormsModule } from '@angular/forms';
+import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,13 +23,16 @@ import { ChicagoComponent } from './chicago/chicago.component';
     DallasComponent,
     DcComponent,
     SanJoseComponent,
-    ChicagoComponent
+    ChicagoComponent,
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule,
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
