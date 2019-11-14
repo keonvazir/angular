@@ -15,7 +15,7 @@
     <div class="rightpanel">
       <div *ngFor="let cake of cakes; let idx = index">
         <div class="img">
-          <a (click)="info(idx)"><img class="pic" [src]="cake.image"/></a>
+          <a (click)="info(idx)"><img width="50px" height="50px" class="pic" [src]="cake.image"/></a><br><br>
         </div>
         <div class="formBox">
           <form (submit)="ratingSubmit(cake._id)">
@@ -27,7 +27,7 @@
               <option value="5">5 stars</option>
             </select>
             <textarea name="newRating.comment" [(ngModel)]="newRating.comment"></textarea>
-            <input type="submit" value="Rate!"/>
+            <input id="rate" type="submit" value="Rate!"/>
           </form>
         </div>
       </div>
