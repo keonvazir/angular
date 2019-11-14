@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const path = require('path')
 
@@ -12,9 +12,9 @@ app.all("*", (req,res,next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
   });
 
-mongoose.connect("mongodb://localhost/weather_API")
-require("./server/config/mongoose.js");
+// mongoose.connect("mongodb://localhost/weather_API")
+// require("./server/config/mongoose.js");
 
-require('./server/config/routes.js')(app)
+// require('./server/config/routes.js')(app)
 
 app.listen(4200, () => console.log("listening on port 4200"));
