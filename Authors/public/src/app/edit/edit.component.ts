@@ -42,7 +42,7 @@ err: any;
     })
     .catch(err=>console.log(err))
   }
-  getOneAuthor(){
+  getAuthorById(){
     this._httpService.getAuthorById(this.id)
     .then(data =>{
       this.author = data;
