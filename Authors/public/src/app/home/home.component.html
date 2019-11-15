@@ -11,7 +11,7 @@
         <tbody *ngFor="let author of authors">
             <tr>
                 <td><button class="btn btn-link" [routerLink]="['/new']">{{author.name}}</button></td>
-                <td><button class="btn btn-primary btn-sm col-5 mr-4" [routerLink]="['/edit'+author._id]">Edit</button><button class="btn btn-danger btn-sm col-5" (click)="onClickDelete(author._id)">Delete</button></td>
+                <td><button class="btn btn-primary btn-sm col-5 mr-4" [routerLink]="['/edit/'+ author._id]">Edit</button><button class="btn btn-danger btn-sm col-5" (click)="onClickDelete(author._id)">Delete</button></td>
             </tr>
         </tbody>
     </table>
