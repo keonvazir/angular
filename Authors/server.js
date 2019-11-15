@@ -43,10 +43,18 @@ app.post('/author', (req, res)=>{
 
 app.put('/authors/:id', (req, res)=>{
     Author.findByIdAndUpdate(req.params.id, req.body, {runValidators: true})
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(data => res.json({"result": "Failed", "data": err}))
+})
 
+app.delete('/authors/:id', (req, res)=>{
+    Author.findByIdAndDelete(req.params.id)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(data => res.json({"result": "Failed", "data": err}))
 })
 
 app.all("*", (req,res,next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
 });
+
 app.listen(8000, () => console.log("listening on port 8000"));
