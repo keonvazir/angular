@@ -6,6 +6,9 @@ import { AppComponent } from './app.component';
 import { EditComponent } from './edit/edit.component';
 import { HomeComponent } from './home/home.component';
 import { NewComponent } from './new/new.component';
+import { FormsModule } from '@angular/forms';
+import { HttpService } from './http.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,9 +19,11 @@ import { NewComponent } from './new/new.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
