@@ -4,7 +4,7 @@
     <h2 *ngIf="trivia">{{trivia.results[0].question}}</h2>
     <form (submit)="triviaAnswer(answer)">
         <selected name="answers" [(ngModel)]="answer">
-            <option *ngFor="let answer of answers" [(ngModel)]="answer">{{answer}}</option>
+            <option *ngFor="let answer of answers" [ngValue]="answer">{{answer}}</option>
         </selected>
         <input type="submit" value="Submit">
     </form>
