@@ -9,9 +9,7 @@ app.use(bodyParser.urlencoded({
     extended: true
 }));
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({
-//     extended: true
-// }));
+
 mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost/authorsdb', { useNewUrlParser: true });
 
