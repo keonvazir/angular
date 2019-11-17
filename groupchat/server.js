@@ -1,19 +1,28 @@
+Skip to content
+Search or jump to…
+
+Pull requests
+Issues
+Marketplace
+Explore
+ 
+@keonvazir 
+1
+00ceantolentino06/MeanStack
+ Code Issues 0 Pull requests 4 Actions Projects 0 Wiki Security Insights
+MeanStack/sockets/groupchat/server.js
+@ceantolentino ceantolentino pushing mean stack
+7a2c289 on Sep 11
+61 lines (51 sloc)  1.77 KB
+  
 const express = require("express");
 const app = express();
-const mongoose = require('mongoose');
-
 
 app.use(express.static(__dirname + "/public"));
 app.set('view engine', 'ejs');
 app.set('views', __dirname + '/views');
 app.use(express.urlencoded({ extended: true }));
 const rooms = {};
-
-const server = app.listen(8000, () => console.log("listening on port 8000"));
-
-const RoomSchema = new mongoose.Schema({
-    
-})
 
 app.get('/', (request, response) => {
     response.render('index', { rooms: rooms });
@@ -34,7 +43,8 @@ app.get('/:room', (req, res) => {
         return res.redirect('/');
     }
     res.render('home', { room: req.params.room });
-}); 
+});
+const server = app.listen(8000, () => console.log("listening on port 8000"));
 
 const io = require('socket.io')(server);
 
