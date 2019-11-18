@@ -1,1 +1,14 @@
-<p>create works!</p>
+<div class="container">
+    <h1>Create a new Product</h1>
+    <div class="box">
+        <form (submit)="addProduct()">
+            <h3>Title: <input type="text" name="newProduct.title" [(ngModel)]="newProduct.title"/></h3>
+            <p *ngIf="error.title">{{error.title.message}}</p>
+            <h3>Price: <input type="number" name="newProduct.price" [(ngModel)]="newProduct.price"/></h3>
+            <p *ngIf="error.price">{{error.price.message}}</p>
+            <h3>Image URL: <input type="text" name="newProduct.image" [(ngModel)]="newProduct.image"/></h3>
+            <p *ngIf="error.image">{{error.image.message}}</p>
+            <input type="submit" value="Create"/>
+        </form>
+    </div>
+</div>

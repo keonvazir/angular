@@ -10,17 +10,18 @@ export class HttpService {
   getProducts(){
     return this._http.get('/api/products');
   }
-  getProductsById(id){
-    return this._http.get(`/api/products/${id}`);
+  getProductsById(id: string){
+    return this._http.get("/api/products"+ id);
 
   }
   addProduct(product){
     return this._http.post('/api/add', product);
   }
-  editProduct(product){
-    return this._http.put(`/api/edit/${product._id}`, product)
+  editProduct(id: string, editProduct: object){
+    return this._http.put("/api/edit/"+ id, editProduct)
   }
-  deleteProduct(id){
-    return this._http.delete(`/api/delete/${id}`)
+  deleteProduct(id:string){
+    console.log("~Service: deleteProduct() initialized~", id);
+    return this._http.delete("/api/delete/"+id);
   }
 }

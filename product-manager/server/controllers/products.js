@@ -2,26 +2,71 @@ const mongoose = require("mongoose");
 const Product = mongoose.model("Product");
 
 module.exports = {
-    index(req, res){
-        Product.find()
-        .then(products => res.json(products))
-        .catch(err =>res.json(err));
+    index: function(req, res){
+        console.log("~Controller: index() initialized~");
+        Product.find({}, function(err, products){
+            if(err){
+                res.json({message: "Error!", error: err});
+            }
+            else{
+                res.json(products);
+            }
+        })
     },
-    show(req, res){
-        Product.findById(req.params.id)
-        .then(products => res.json(products))
-        .catch(err =>res.json(err));
+    show: function(req, res){
+        console.log("~Controller: show() initialized~");
+        let id = req.params.id;
+        Product.findOne({_id: id},function(err, product){
+            if(err){
+                res.json({message: "Error!", error: err});
+            }
+            else{
+                res.json(product);
+            }
+        })
     },
-    addProduct(req, res){
-        Product.create(req.body)
-        .then(products => res.json(products))
-        .catch(err =>res.json(err));
+    addProduct: function(req, res){
+        console.log("~Controller: addProduct() initialized~");
+        Product.create({title: req.body.title, price: req.body.price, image: req.body.image}, function(err, product){
+            if(err){
+                res.json({message: "Error!", error: err});
+            }
+            else{
+                res.json({message: "Success!", added: true});
+            }
+        })
     },
-    editProduct(req, res){
-        Product.findByIdAndUpdate(req.params.id, req.body, {new: true, runValidators: true, context: 'query'})
-        .then(products => res.json(products))
-        .catch(err =>res.json(err));
+    editProduct: function(req, res){
+        console.log("~Controller: editProduct() initialized~");
+        let id = req.params.id;
+        Product.findById(id, function(err, product){
+            console.log("~Controller: editProduct() - findById initialized~");
+            if(err){
+                res.json({message: "Error!", error: err});
+            }
+            else{
+                if(req.body.title){
+                    product.title = req.body.title; 
+                }
+                if(req.body.price){
+                    product.price = req.body.price;
+                }
+                if(req.body.image){
+                    product.image = req.body.image;
+                }
+            }
+            product.save(function(err){
+                console.log("~Controller: editProduct() - save initialized~");
+                if(err){
+                    res.json({message: "Error!", error: err});
+                }
+                else{
+                    res.json({message: "Success!", product: product})
+                }
+            })
+        })
     },
+
     deleteProduct(req, res){
         Product.findByIdAndDelete(req.params.id)
         .then(results => res.json(results))
