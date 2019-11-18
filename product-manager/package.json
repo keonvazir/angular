@@ -10,7 +10,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "ejs": "^2.7.2",
     "express": "^4.17.1",
-    "express-flash": "0.0.2"
+    "express-flash": "0.0.2",
+    "mongoose": "^5.7.11"
   }
 }
