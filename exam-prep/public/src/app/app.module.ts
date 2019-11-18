@@ -22,12 +22,12 @@ import { FormsModule } from '@angular/forms';
     ReviewsComponent,
     RestaurantsComponent,
     EditResComponent,
-    HttpClientModule,
-    FormsModule
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    FormsModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]
