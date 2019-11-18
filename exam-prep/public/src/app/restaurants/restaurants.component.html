@@ -1,1 +1,26 @@
-<p>restaurants works!</p>
+<div class="container">
+        <h1>Let's eat</h1>
+        <button class="btn btn-primary" [routerLink]="['/restaurantz/new']">New restaurant</button>
+        <table class="table table-bordered mt-1 text-center">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Restaurant</th>
+                    <th scope="col">Cuisine</th>
+                    <th scope="col">Actions available</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let restaurant of restaurants">
+                <tr>
+                    <td>{{restaurant.name}}</td>
+                    <td>{{restaurant.cuisine}}</td>
+                    <td><button class="btn btn-secondary btn-sm mr-2" [routerLink]="['/restaurantz', restaurant._id]">Read reviews</button> <button
+                            class="btn btn-warning btn-sm mr-2" [routerLink]="[restaurant._id, 'edit']">Update</button>
+                             <button class="btn btn-danger btn-sm" *ngIf="((now-convertDate(restaurant.createdAt))/1000)>30" (click)="deleteRestaurant(restaurant._id)">Delete</button>
+                             <button class="btn btn-danger btn-sm disabled" *ngIf="((now-convertDate(restaurant.createdAt))/1000)<30">Delete</button>
+                            </td>
+                            
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <router-outlet></router-outlet>
