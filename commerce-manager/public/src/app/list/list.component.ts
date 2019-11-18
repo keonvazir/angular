@@ -22,10 +22,17 @@ export class ListComponent implements OnInit {
     })
     .catch(err => console.log(err))
   }
-  deleteProduct(id){
+  // deleteProduct(id){
+  //   this._httpService.deleteProductById(id)
+  //   .then(()=> this.getProducts())
+  //   .catch(err=>console.log(err))
+  // }
+  deleteProduct(id) {
     this._httpService.deleteProductById(id)
-    .then(()=> this.getProducts())
-    .catch(err=>console.log(err))
+      .then(() => this.getProducts()
+      )
+      .catch(err => console.log(err))
+      
   }
   convertDate(date){
     return new Date(date);

@@ -17,7 +17,7 @@ export class HttpService {
   }
 
   getByIdProduct(id){
-    return this._http.get(`/products/${id}`).toPromise();
+    return this._http.get(`/products/show/${id}`).toPromise();
   }
 
   updateProduct(data){
@@ -25,6 +25,6 @@ export class HttpService {
   }
 
   deleteProductById(id){
-    return this._http.delete(`/products/${id}`).toPromise();
+    return this._http.delete(`/products/delete/${id}`).toPromise();
   }
 }

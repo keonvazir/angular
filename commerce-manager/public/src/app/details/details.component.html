@@ -1,1 +1,10 @@
-<p>details works!</p>
+<div class="container">
+    <h1>Commerce Manager</h1><br>
+    <div class="box">
+        <h1>Name <p>{{product.name}}</p></h1><br><br>
+        <h1>Quantity <p>{{product.quantity}}</p></h1><br><br>
+        <h1>Price <p>{{product.price}}</p></h1><br><br>
+        <button class="btn btn-secondary" [routerLink]="['/']">Cancel</button>
+        <button class="btn btn-danger btn-sm" (click)="onClickDelete(product._id)">Delete</button>
+    </div>
+</div>

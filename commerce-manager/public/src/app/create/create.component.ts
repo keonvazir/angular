@@ -16,6 +16,7 @@ err: any;
   ngOnInit() {
     this.newProd = { "name": "", "quantity": "", "price": "" };
     this.err = {};
+    
   }
   addProduct(){
     this._httpService.createProduct(this.newProd)
@@ -28,5 +29,6 @@ err: any;
       }
     })
   }
+  
 
 }

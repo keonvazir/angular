@@ -19,8 +19,8 @@ mongoose.connect('mongodb://localhost/commercedb', { useNewUrlParser: true });
 
 const ProductSchema = new mongoose.Schema({
     name: { type: String, minlength: [3, "Name must be at least 3 characters"] },
-    quantity: Number,
-    price: Number,
+    quantity: {type: Number, min: [0, "Need to include quantity"], required: [true, "Need to include quantity"]},
+    price: {type: Number, min: [0,"Need to include the price"], required: [true, "Need to include the price"]},
 }, { timestamps: true })
 
 
@@ -40,7 +40,7 @@ app.get('/products', (req, res) => {
 });
 
 ////////////////////// GET ONE Product ///////////////////////////
-app.get('/products/:id', (req, res) => {
+app.get('/products/show/:id', (req, res) => {
     Product.findById(req.params.id)
         .then(data => res.json({ "result": "Success", "data": data }))
         .catch(err => res.json({ "result": "Failed", "data": err }))
@@ -62,7 +62,7 @@ app.put('/products/:id', (req, res) => {
 })
 
 ////////////////////// DELETE ONE Product ///////////////////////////
-app.delete('/products/:id', (req, res) => {
+app.delete('/products/delete/:id', (req, res) => {
     Product.findByIdAndDelete(req.params.id)
         .then(data => res.json({ "result": "Success", "data": data }))
         .catch(err => res.json({ "result": "Failed", "data": err }))

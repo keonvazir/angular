@@ -1,1 +1,22 @@
-<p>edit works!</p>
+<div class="container col-7">
+        <h5>Edit Product</h5>
+        <form (submit)="editProduct()" class="border p-4">
+            <div class="form-group">
+                <label for="name">Restaurant Name:</label>
+                <input class="form-control" type="text" name="name" [(ngModel)]="product.name">
+                <small class="text-danger d-block" *ngIf="err.name!=null">{{err.name.message}}</small>
+            </div>
+            <div class="form-group">
+                <label for="name">Quantity:</label>
+                <input class="form-control" type="number" name="quantity" [(ngModel)]="product.quantity">
+                <small class="text-danger d-block" *ngIf="err.quantity!=null">{{err.quantity.message}}</small>
+            </div>
+            <div class="form-group">
+                    <label for="name">Price:</label>
+                    <input class="form-control" type="number" name="price" [(ngModel)]="product.price">
+                    <small class="text-danger d-block" *ngIf="err.price!=null">{{err.price.message}}</small>
+                </div>
+            <button class="btn btn-primary float-right">Update</button>
+            <button class="btn btn-secondary" [routerLink]="['/']">Cancel</button>
+        </form>
+    </div>
