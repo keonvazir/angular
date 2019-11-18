@@ -15,10 +15,6 @@ require("./server/config/mongoose.js");
 //Routes
 require("./server/config/routes.js")(app);
 
-app.all("*", (req,res,next) => {
-    res.sendFile(path.resolve("./public/dist/public/index.html"))
-});
-
 
 //Port
 app.listen(1337, function(){
