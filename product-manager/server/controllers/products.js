@@ -12,7 +12,7 @@ module.exports = {
         .then(products => res.json(products))
         .catch(err =>res.json(err));
     },
-    addProudct(req, res){
+    addProduct(req, res){
         Product.create(req.body)
         .then(products => res.json(products))
         .catch(err =>res.json(err));
