@@ -20,12 +20,12 @@ mongoose.connect('mongodb://localhost/restaurantdb', { useNewUrlParser: true });
 const ReviewSchema = new mongoose.Schema({
     reviewed_by: { type: String, minlength: [3, "Name must be at least 3 characters"] },
     rating: Number,
-    review: { type: String, minlength: [3, "Your review must be at least characters"] }
+    review: { type: String, minlength: [3, "Your review must be at least 3 characters long"] }
 }, { timestamps: true })
 
 const RestaurantSchema = new mongoose.Schema({
     name: { type: String, unique:true,  minlength: [3, "Name must be at least 3 characters"] },
-    cuisine: { type: String, minlength: [3, "Cuisine must be at least 3 characters"] },
+    cuisine: { type: String, default: '', minlength: [3, "Cuisine must be at least 3 characters"] },
     reviews: [ReviewSchema]
 }, { timestamps: true })
 
@@ -117,4 +117,5 @@ app.delete('/reviews/:id', (req, res) => {
 app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
 });
+
 app.listen(8000, () => console.log("listening on port 8000"));
