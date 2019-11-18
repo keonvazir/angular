@@ -1,1 +1,29 @@
-<p>new-rev works!</p>
+<div class="container col-7">
+        <h1>Let's eat</h1>
+        <h5>Write a review for {{restaurant.name}}</h5>
+        <form (submit)="addReview()" class="border p-3">
+            <div class="form-group">
+                <label for="reviewed_by">Your name:</label>
+                <input class="form-control" type="text" name="reviewed_by" id="reviewed_by" [(ngModel)]="newReview.reviewed_by">
+                <small class="text-danger d-block" *ngIf="err.reviewed_by!=null">{{err.reviewed_by.message}}</small>
+            </div>
+            <div class="form-group">
+                <label for="rating">Stars:</label>
+                <select class="form-control col-5" name="rating" id="rating" [(ngModel)]="newReview.rating">
+                    <option value=1>1 star</option>
+                    <option value=2>2 star</option>
+                    <option value=3>3 star</option>
+                    <option value=4>4 star</option>
+                    <option value=5>5 star</option>
+    
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="review">Your review:</label>
+                <textarea class="form-control" name="review" id="review" cols="30" rows="4" [(ngModel)]="newReview.review"></textarea>
+                <small class="text-danger d-block" *ngIf="err.review!=null">{{err.review.message}}</small>
+            </div>
+            <button class="btn btn-primary float-right">Submit</button>
+            <button class="btn btn-secondary" [routerLink]="['/']">Cancel</button>
+        </form>
+    </div>
