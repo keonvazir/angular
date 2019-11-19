@@ -23,11 +23,11 @@ const EventSchema = new mongoose.Schema({
     time: {type: Number, min: [0, "must be a valid time!"]},
     capacity: {type: Number, min:[2, "capacity of event must include more than 1 person!"]},
     users: [UserSchema]
-})
+}, {timestamps: true})
 
 const UserSchema = new mongoose.Schema({
     fullname: {type: String, unique: true, minlength: [3, "Name must have more than 3 characters. Please try again!"]},
-})
+}, {timestamps: true})
 
 EventSchema.plugin(uniqueValidator, {message: "This event has already been added"})
 UserSchema.plugin(uniqueValidator, {message: "This user has already been added"})
