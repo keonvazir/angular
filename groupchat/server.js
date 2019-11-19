@@ -7,6 +7,7 @@ app.set('views', __dirname + '/views');
 app.use(express.urlencoded({ extended: true }));
 const rooms = {};
 
+////////// SOCKETS ///////////////////////
 app.get('/', (request, response) => {
     response.render('index', { rooms: rooms });
 });
@@ -27,8 +28,12 @@ app.get('/:room', (req, res) => {
     }
     res.render('home', { room: req.params.room });
 });
+
+//// END OF SOCKETS FOR CHAT /////////////////
+
 const server = app.listen(8000, '0.0.0.0', () => console.log("listening on port 8000"));
 
+//SOCKET//
 const io = require('socket.io')(server);
 
 io.on('connection', function(socket) { //2
@@ -59,3 +64,4 @@ function getUserRooms(socket) {
         return names
     }, [])
 }
+//END SOCKET//
