@@ -27,7 +27,7 @@ app.get('/:room', (req, res) => {
     }
     res.render('home', { room: req.params.room });
 });
-const server = app.listen(8000, () => console.log("listening on port 8000"));
+const server = app.listen(8000, '0.0.0.0', () => console.log("listening on port 8000"));
 
 const io = require('socket.io')(server);
 
