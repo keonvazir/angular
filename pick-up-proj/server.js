@@ -3,6 +3,7 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
+const io = require('socket.io')
 var uniqueValidator = require('mongoose-unique-validator');
 
 app.use(express.static(__dirname + "/public/dist/public/"));
@@ -12,6 +13,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+const rooms = {};
+
 mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost/pickupdb', { useNewUrlParser: true });
 
