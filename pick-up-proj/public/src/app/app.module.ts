@@ -7,6 +7,7 @@ import { CreateComponent } from './create/create.component';
 import { ShowComponent } from './show/show.component';
 import { HomeComponent } from './home/home.component';
 import { EditComponent } from './edit/edit.component';
+import { ChatComponent } from './chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { EditComponent } from './edit/edit.component';
     CreateComponent,
     ShowComponent,
     HomeComponent,
-    EditComponent
+    EditComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
