@@ -22,20 +22,20 @@ const UserSchema = new mongoose.Schema({
     level: {type: String, required: [true, "Need to include a level."]}
 }, {timestamps: true})
 
-const EventSchema = new mongoose.Schema({
-    name: {type: String, unique: true, minlength: [3, "Event name must be at least 3 characters. Please try again!"]},
-    location: {type: String, default: '', required: [true, "Must include a location for your event!"]},
+const SportSchema = new mongoose.Schema({
+    name: {type: String, unique: true, minlength: [3, "Sport name must be at least 3 characters. Please try again!"]},
+    location: {type: String, default: '', required: [true, "Must include a location for your Sport!"]},
     date: {type: Date, required: [true, "must be a valid time!"]},
-    capacity: {type: Number, min:[2, "capacity of event must include more than 1 person!"]},
+    capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
     image: {type: String},
     users: [UserSchema]
 }, {timestamps: true})
 
 
 
-EventSchema.plugin(uniqueValidator, {message: "This event has already been added"})
+SportSchema.plugin(uniqueValidator, {message: "This Sport has already been added"})
 UserSchema.plugin(uniqueValidator, {message: "This user has already been added"})
-const Event = mongoose.model("Event", EventSchema)
+const Sport = mongoose.model("Sport", SportSchema)
 const User = mongoose.model("User", UserSchema)
 
 var date = new Date();
@@ -43,40 +43,40 @@ console.log(date)
 
 ///// End of Models //////
 
-///// GET ALL EVENTS /////
-app.get('/events', (req, res)=>{
-    Event.find()
+///// GET ALL SportS /////
+app.get('/sports_json', (req, res)=>{
+    Sport.find()
     .then(data => res.json({"result": "Success", "data": data}))
-    .catch(data => res.json({"result": "Failed", "data": err}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 })
 
-///// GET ONE EVENT /////
-app.get('/events/:id', (req, res)=>{
-    Event.findById(req.params.id)
+///// GET ONE Sport /////
+app.get('/sports_json/:id', (req, res)=>{
+    Sport.findById(req.params.id)
     .then(data => res.json({"result": "Success", "data": data}))
-    .catch(data => res.json({"result": "Failed", "data": err}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 
 })
-///// CREATE AN EVENT /////
-app.post('/event', (req, res)=>{
+///// CREATE AN Sport /////
+app.post('/sport_json', (req, res)=>{
     console.log(req.body)
-    Event.create(req.body)
+    Sport.create(req.body)
     .then(data => res.json({"result": "Success", "data": data}))
-    .catch(data => res.json({"result": "Failed", "data": err}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 })
 
-///// EDIT AN EVENT //////
-app.put('/events/:id', (req, res)=>{
-    Event.findByIdAndUpdate(req.params.id, req.body, {runValidators: true, context: 'query'})
+///// EDIT AN Sport //////
+app.put('/sports_json/:id', (req, res)=>{
+    Sport.findByIdAndUpdate(req.params.id, req.body, {runValidators: true, context: 'query'})
     .then(data => res.json({"result": "Success", "data": data}))
-    .catch(data => res.json({"result": "Failed", "data": err}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 })
 
-///// DELETE AN EVENT /////
-app.delete('/events/:id', (req, res)=>{
-    Event.findByIdAndDelete(req.params.id)
+///// DELETE AN Sport /////
+app.delete('/sports_json/:id', (req, res)=>{
+    Sport.findByIdAndDelete(req.params.id)
     .then(data => res.json({"result": "Success", "data": data}))
-    .catch(data => res.json({"result": "Failed", "data": err}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 
 })
 

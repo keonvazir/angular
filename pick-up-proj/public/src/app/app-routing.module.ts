@@ -11,10 +11,11 @@ import { ChatComponent } from './chat/chat.component';
 const routes: Routes = [
   {path: '', pathMatch: 'full', redirectTo: '/sports'},
   {path: 'sports', component: HomeComponent},
-  {path: 'sports/:id', component: ShowComponent},
   {path: 'sports/new', component: CreateComponent},
+  {path: 'sports/chatroom', component: ChatComponent},
   {path: 'sports/edit/:id', component: EditComponent},
-  {path: 'sports/chatroom', component: ChatComponent}
+  {path: 'sports/:id', component: ShowComponent},
+  
 ];
 
 @NgModule({

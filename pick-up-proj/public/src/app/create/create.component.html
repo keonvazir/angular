@@ -1,3 +1,47 @@
-
-
+<section class="page-section portfolio" id="portfolio">
+<div class="text-center mt-4">
+    <!--INSERT PROGRESS BAR HERE-->
+    <h1>Set-Up The <span style="color:#009679">Squad</span></h1><br>
+    <form (submit)="addSport()">
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Your name: <input class="form-control" type="text" name="name" [(ngModel)]="fullname.name"></p>
+            <small class="text-danger d-block" *ngIf="err.name!=null">{{err.name.message}}</small>
+        </div>
+        <div class="form-group">
+            <p>Level: </p>
+            <select name="level" [(ngModel)]="fullname.level">
+                <option value="beginner">Beginner</option>
+                <option value="advanced">Advanced</option>
+                <option value="pro"><span style="color:#009679">Pro</span></option>
+            </select>
+            <small class="text-danger d-block" *ngIf="err.level!=null">{{err.level.message}}</small>
+        </div>
+        <hr>
+        <p style="font-size: small;"><i>Event details</i></p>
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Name of event: <input class="form-control" type="text" name="name" [(ngModel)]="newSport.name"></p>
+            <small class="text-danger d-block" *ngIf="err.name!=null">{{err.name.message}}</small>
+        </div>
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Location: <input class="form-control" type="text" name="location" [(ngModel)]="newSport.location"></p>
+            <small class="text-danger d-block" *ngIf="err.location!=null">{{err.location.message}}</small>
+        </div>
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Date: <input class="form-control" type="date" name="date" [(ngModel)]="newSport.date"></p>
+            <small class="text-danger d-block" *ngIf="err.date!=null">{{err.date.message}}</small>
+        </div>
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Capacity: <input class="form-control" type="number" name="capacity" [(ngModel)]="newSport.capacity"></p>
+            <small class="text-danger d-block" *ngIf="err.capacity!=null">{{err.capacity.message}}</small>
+        </div>
+        <div class="form-group" style="width: 500px; margin-left: 240px;">
+            <p>Image URL: <input class="form-control" type="text" name="image" [(ngModel)]="newSport.image"></p>
+            <small class="text-danger d-block" *ngIf="err.image!=null">{{err.image.message}}</small>
+        </div>
+        <div class="form-group" style="width: 100px; margin-left: 440px;">
+            <input class="btn btn-outline-dark" style="color:#009679;" type="submit" value="Let's Go!">
+        </div>
+    </form>
+</div>
+</section>
 

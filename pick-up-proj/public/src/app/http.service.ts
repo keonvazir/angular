@@ -7,19 +7,19 @@ import { HttpClient} from '@angular/common/http';
 export class HttpService {
 
   constructor(private _http: HttpClient) { }
-  getAllEvents(){
+  getAllSports(){
     return this._http.get('/sports')
   }
-  createEvent(sport){
+  createSport(sport){
     return this._http.post('/sport', sport)
   }
-  getEventById(id){
+  getSportById(id){
     return this._http.get(`/sports/${id}`)
   }
-  updateEvent(sport){
+  updateSport(sport){
     return this._http.put(`/sports/edit/${sport._id}`, sport)
   }
-  deleteEventById(id){
+  deleteSportById(id){
     return this._http.delete(`/sports/${id}`)
   }
 }
