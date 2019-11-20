@@ -12,7 +12,7 @@
             <select name="level" [(ngModel)]="fullname.level">
                 <option value="beginner">Beginner</option>
                 <option value="advanced">Advanced</option>
-                <option value="pro"><span style="color:#009679">Pro</span></option>
+                <option value="pro">Pro</option>
             </select>
             <small class="text-danger d-block" *ngIf="err.level!=null">{{err.level.message}}</small>
         </div>
