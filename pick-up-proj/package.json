@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@reactivex/rxjs": "^6.5.3",
     "@types/socket.io": "^2.1.4",
     "ejs": "^2.7.4",
     "express": "^4.17.1",
@@ -18,6 +19,8 @@
     "express-session": "^1.17.0",
     "mongoose": "^5.7.12",
     "mongoose-unique-validator": "^2.0.3",
+    "ngx-socket-io": "^3.0.1",
+    "rxjs": "^6.5.3",
     "socket.io": "^2.3.0",
     "startbootstrap-freelancer": "^5.1.3"
   }

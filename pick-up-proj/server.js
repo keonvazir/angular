@@ -3,17 +3,16 @@ const app = express();
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
-const io = require('socket.io')
+// const io = require('socket.io');
 var uniqueValidator = require('mongoose-unique-validator');
 
 app.use(express.static(__dirname + "/public/dist/public/"));
-// app.set('view engine', 'ejs');
-// app.set('views', __dirname + '/views');
+
 app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
-const rooms = {};
+// const rooms = {};
 
 mongoose.set('useFindAndModify', false);
 mongoose.connect('mongodb://localhost/pickupdb', { useNewUrlParser: true });
