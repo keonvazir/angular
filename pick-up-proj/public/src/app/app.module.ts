@@ -12,6 +12,10 @@ import { ChatComponent } from './chat/chat.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { EnterChatComponent } from './enter-chat/enter-chat.component';
+import { BasketballComponent } from './basketball/basketball.component';
+import { SoccerComponent } from './soccer/soccer.component';
+import { FootballComponent } from './football/football.component';
+import { VolleyballComponent } from './volleyball/volleyball.component';
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 
@@ -27,7 +31,11 @@ import { EnterChatComponent } from './enter-chat/enter-chat.component';
     HomeComponent,
     EditComponent,
     ChatComponent,
-    EnterChatComponent
+    EnterChatComponent,
+    BasketballComponent,
+    SoccerComponent,
+    FootballComponent,
+    VolleyballComponent
   ],
   imports: [
     BrowserModule,
