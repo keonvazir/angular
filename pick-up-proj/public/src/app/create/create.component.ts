@@ -25,6 +25,8 @@ err: any;
         this.err = data['data']['errors']
         console.log(this.err)
       }else{
+        //should direct to the specific category's main page!
+        //***** */
         this._router.navigate([`/sports/:_id`])
       }
     })
