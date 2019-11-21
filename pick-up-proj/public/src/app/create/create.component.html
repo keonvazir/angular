@@ -32,6 +32,10 @@
                 </select>
                 <small class="text-danger d-block" *ngIf="err.level!=null">{{err.level.message}}</small>
             </div>
+            <div class="form-group" style="width: 500px; margin-left: 240px;">
+                    <p>Description: <textarea class="form-control" type="text" name="description" [(ngModel)]="newSport.description"></textarea></p>
+                    <small class="text-danger d-block" *ngIf="err.description!=null">{{err.description.message}}</small>
+                </div>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
             <p>Location: <input class="form-control" type="text" name="location" [(ngModel)]="newSport.location"></p>
             <small class="text-danger d-block" *ngIf="err.location!=null">{{err.location.message}}</small>

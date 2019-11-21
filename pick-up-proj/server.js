@@ -29,6 +29,7 @@ const SportSchema = new mongoose.Schema({
     location: {type: String, default: '', required: [true, "Must include a location for your Sport!"]},
     date: {type: Date, required: [true, "must be a valid time!"]},
     capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
+    description: {type: String},
     category:{type: String},
     image: {type: String},
     users: [UserSchema]
