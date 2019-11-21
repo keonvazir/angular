@@ -15,8 +15,11 @@ export class HttpService {
   getAllUsers(){
     return this._http.get('/sports').toPromise()
   }
-  createSport(sport){
+  createSport(sport, user){
     return this._http.post('/sport', sport).toPromise()
+  }
+  createUser(user){
+    return this._http.post('/sport', user).toPromise()
   }
   getSportById(id){
     return this._http.get(`/sports/${id}`)

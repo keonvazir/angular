@@ -4,12 +4,12 @@
     <h1>Set-Up The <span style="color:#009679">Squad</span></h1><br>
     <form (submit)="addSport()">
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Your name: <input class="form-control" type="text" name="name" [(ngModel)]="fullname.name"></p>
+            <p>Your name: <input class="form-control" type="text" name="user.name" [(ngModel)]="user.name"></p>
             <small class="text-danger d-block" *ngIf="err.name!=null">{{err.name.message}}</small>
         </div>
         <div class="form-group">
             <p>Level: </p>
-            <select name="level" [(ngModel)]="fullname.level">
+            <select name="user.level" [(ngModel)]="user.level">
                 <option value="beginner">Beginner</option>
                 <option value="advanced">Advanced</option>
                 <option value="pro">Pro</option>
@@ -19,12 +19,12 @@
         <hr>
         <p style="font-size: small;"><i>Event details</i></p>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Name of event: <input class="form-control" type="text" name="name" [(ngModel)]="newSport.name"></p>
+            <p>Name of event: <input class="form-control" type="text" name="newSport.name" [(ngModel)]="newSport.name"></p>
             <small class="text-danger d-block" *ngIf="err.name!=null">{{err.name.message}}</small>
         </div>
         <div class="form-group">
                 <p>Category: </p>
-                <select name="category" [(ngModel)]="newSport.category">
+                <select name="newSport.category" [(ngModel)]="newSport.category">
                     <option value="basketball">Basketball</option>
                     <option value="soccer">Soccer</option>
                     <option value="football">Football</option>
@@ -37,19 +37,19 @@
                     <small class="text-danger d-block" *ngIf="err.description!=null">{{err.description.message}}</small>
                 </div>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Location: <input class="form-control" type="text" name="location" [(ngModel)]="newSport.location"></p>
+            <p>Location: <input class="form-control" type="text" name="newSport.location" [(ngModel)]="newSport.location"></p>
             <small class="text-danger d-block" *ngIf="err.location!=null">{{err.location.message}}</small>
         </div>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Date: <input class="form-control" type="date" name="date" [(ngModel)]="newSport.date"></p>
+            <p>Date: <input class="form-control" type="date" name="newSport.date" [(ngModel)]="newSport.date"></p>
             <small class="text-danger d-block" *ngIf="err.date!=null">{{err.date.message}}</small>
         </div>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Capacity: <input class="form-control" type="number" name="capacity" [(ngModel)]="newSport.capacity"></p>
+            <p>Capacity: <input class="form-control" type="number" name="newSport.capacity" [(ngModel)]="newSport.capacity"></p>
             <small class="text-danger d-block" *ngIf="err.capacity!=null">{{err.capacity.message}}</small>
         </div>
         <div class="form-group" style="width: 500px; margin-left: 240px;">
-            <p>Image URL: <input class="form-control" type="text" name="image" [(ngModel)]="newSport.image"></p>
+            <p>Image URL: <input class="form-control" type="text" name="newSport.image" [(ngModel)]="newSport.image"></p>
             <small class="text-danger d-block" *ngIf="err.image!=null">{{err.image.message}}</small>
         </div>
         <div class="form-group" style="width: 100px; margin-left: 440px;">
