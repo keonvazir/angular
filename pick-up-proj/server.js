@@ -30,7 +30,7 @@ const SportSchema = new mongoose.Schema({
     date: {type: Date, required: [true, "must be a valid time!"]},
     capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
     description: {type: String},
-    category:{type: String},
+    category:{type: String, required: true},
     image: {type: String},
     users: [UserSchema]
 }, {timestamps: true})

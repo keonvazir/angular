@@ -16,7 +16,7 @@ export class HttpService {
     return this._http.get('/sports').toPromise()
   }
   createSport(sport){
-    return this._http.post('/sport', sport)
+    return this._http.post('/sport', sport).toPromise()
   }
   getSportById(id){
     return this._http.get(`/sports/${id}`)
@@ -27,6 +27,13 @@ export class HttpService {
   deleteSportById(id){
     return this._http.delete(`/sports/${id}`)
   }
+  getFootball(sport){
+    return this._http.get('/sports/football', sport).toPromise()
+  }
+  getBasketball(sport){
+    return this._http.get('/sports/basketball', sport)
+  }
+
   // new_user(roomName: string, name: string){
   //   this.socket.emit("message", roomName);
   //   this.socket.emit("message", name);

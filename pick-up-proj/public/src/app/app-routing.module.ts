@@ -18,11 +18,11 @@ const routes: Routes = [
   {path: 'sports/new', component: CreateComponent},
   {path: 'sports/chatroom', component: ChatComponent},
   {path: 'sports/edit/:id', component: EditComponent},
-  {path: 'sports/:id', component: ShowComponent},
   {path: 'sports/basketball', component: BasketballComponent},
   {path: 'sports/football', component: FootballComponent},
   {path: 'sports/soccer', component: SoccerComponent},
-  {path: 'sports/volleyball', component: VolleyballComponent}
+  {path: 'sports/volleyball', component: VolleyballComponent},
+  {path: 'sports/:id', component: ShowComponent},
   
 ];
 

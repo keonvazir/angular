@@ -14,13 +14,13 @@ err: any;
   constructor(private _httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
-    this.newSport = {"name": "", "location": "", "date": "", "capacity":"", "image":""};
+    this.newSport = {"name": "", "location": "", "date": "", "capacity":"", "image":"", "description":"", "category": ""};
     this.fullname = {"name": "", "level": ""};
     this.err = {};
   }
   addSport(){
     this._httpService.createSport(this.newSport)
-    .subscribe((data)=>{
+    .then((data)=>{
       if(data['result']=="Failed"){
         this.err = data['data']['errors']
         console.log(this.err)

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-football',
@@ -6,10 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./football.component.css']
 })
 export class FootballComponent implements OnInit {
-
-  constructor() { }
+sport: any;
+category: any;
+  constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
+    this.sport;
+    this._route.params.subscribe((params: Params)=>{
+      console.log(params['id'])
+      this.category = params['category']
+      this.getSport(params['category'])
+    })
   }
-
+  getSport(category){
+    this._httpService.getFootball(category).then(data =>{
+      console.log(data);
+        this.sport = data['data'];
+    })
+  }
 }
