@@ -39,6 +39,7 @@ const io = require('socket.io')(server);
 io.on('connection', function(socket) { //2
     socket.on('new_user', function(room, name) {
         socket.join(room)
+        console.log("Joining: "+room);
         rooms[room].users[socket.id] = name;
         socket.to(room).broadcast.emit('user_connected', name);
         socket.emit('get_all_messages', rooms[room].messages)
@@ -64,4 +65,4 @@ function getUserRooms(socket) {
         return names
     }, [])
 }
-//END SOCKET//
+

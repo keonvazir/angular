@@ -16,17 +16,17 @@ app.use(express.json());
 // const rooms = {};
 
 mongoose.set('useFindAndModify', false);
-mongoose.connect('mongodb://localhost/pickupdb', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/pickupdb_new', { useNewUrlParser: true });
 
 // Models //
 
 const UserSchema = new mongoose.Schema({
-    fullname: {type: String, unique: true, minlength: [3, "Name must have more than 3 characters. Please try again!"]},
+    fullname: {type: String, minlength: [3, "Name must have more than 3 characters. Please try again!"]},
     level: {type: String, required: [true, "Need to include a level."]}
 }, {timestamps: true})
 
 const SportSchema = new mongoose.Schema({
-    name: {type: String, unique: true, minlength: [3, "Sport name must be at least 3 characters. Please try again!"]},
+    name: {type: String, minlength: [3, "Sport name must be at least 3 characters. Please try again!"]},
     location: {type: String},
     date: {type: Date},
     capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
@@ -70,6 +70,7 @@ app.get('/users_json', (req, res)=>{
 })
 //// CREATE A USER /////
 app.post('/user_json', (req, res)=>{
+    console.log(req.body);
     User.create(req.body)
     .then(data => res.json({"result": "Success", "data": data}))
     .catch(err => res.json({"result": "Failed", "data": err}))
@@ -99,35 +100,35 @@ app.delete('/sports_json/:id', (req, res)=>{
 })
 
 ///// GET ALL BASKETBALL ////
-app.get('/sports_json/basketball', (req, res)=>{
-    Sport.findOne(req.params.category)
+app.get('/sports_cat_json/:category', (req, res)=>{
+    Sport.find({category:req.params.category})
     .then(data => res.json({"result": "Success", "data": data}))
     .catch(err => res.json({"result": "Failed", "data": err}))
 })
 
-///// GET ALL FOOTBALL ////
-app.get('/sports_json/football', (req, res)=>{
-    Sport.findOne(req.params.category)
-    .then(data => res.json({"result": "Success", "data": data}))
-    .catch(err => res.json({"result": "Failed", "data": err}))
-})
+// ///// GET ALL FOOTBALL ////
+// app.get('/sports_json/football', (req, res)=>{
+//     Sport.findOne(req.params.category)
+//     .then(data => res.json({"result": "Success", "data": data}))
+//     .catch(err => res.json({"result": "Failed", "data": err}))
+// })
 
-///// GET ALL SOCCER ////
-app.get('/sports_json/soccer', (req, res)=>{
-    Sport.findOne(req.params.category)
-    .then(data => res.json({"result": "Success", "data": data}))
-    .catch(err => res.json({"result": "Failed", "data": err}))
-})
+// ///// GET ALL SOCCER ////
+// app.get('/sports_json/soccer', (req, res)=>{
+//     Sport.findOne(req.params.category)
+//     .then(data => res.json({"result": "Success", "data": data}))
+//     .catch(err => res.json({"result": "Failed", "data": err}))
+// })
 
-///// GET ALL VOLLEYBALL ////
-app.get('/sports_json/volleyball', (req, res)=>{
-    Sport.findOne(req.params.category)
-    .then(data => res.json({"result": "Success", "data": data}))
-    .catch(err => res.json({"result": "Failed", "data": err}))
-})
+// ///// GET ALL VOLLEYBALL ////
+// app.get('/sports_json/volleyball', (req, res)=>{
+//     Sport.findOne(req.params.category)
+//     .then(data => res.json({"result": "Success", "data": data}))
+//     .catch(err => res.json({"result": "Failed", "data": err}))
+// })
 
 app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
 });
 
-app.listen(7000, '0.0.0.0', () => console.log("listening on port 7000"));
+app.listen(7000, () => console.log("listening on port 7000"));

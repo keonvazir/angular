@@ -39,18 +39,18 @@ export class HttpService {
   deleteSportById(id){
     return this._http.delete(`/sports_json/${id}`).toPromise()
   }
-  getFootball(sport){
-    return this._http.get('/sports_json/football', sport).toPromise()
+  getFootball(category){
+    return this._http.get('/sports_cat_json/'+ category).toPromise()
   }
-  getBasketball(sport){
-    return this._http.get('/sports_json/basketball', sport)
-  }
-  getSoccer(sport){
-    return this._http.get('/sports_json/football', sport).toPromise()
-  }
-  getVolleyball(sport){
-    return this._http.get('/sports_json/basketball', sport)
-  }
+  // getBasketball(sport){
+  //   return this._http.get('/sports_json/basketball', sport)
+  // }
+  // getSoccer(sport){
+  //   return this._http.get('/sports_json/football', sport).toPromise()
+  // }
+  // getVolleyball(sport){
+  //   return this._http.get('/sports_json/basketball', sport)
+  // }
 
   // new_user(roomName: string, name: string){
   //   this.socket.emit("message", roomName);

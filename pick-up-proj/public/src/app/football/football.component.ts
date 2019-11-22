@@ -8,22 +8,23 @@ import { ActivatedRoute, Router, Params } from '@angular/router';
   styleUrls: ['./football.component.css']
 })
 export class FootballComponent implements OnInit {
-sport: any;
+events: any;
 category: any;
   constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
-    this.sport;
-    this._route.params.subscribe((params: Params)=>{
-      console.log(params['id'])
-      this.category = params['category']
-      this.getSport(params['category'])
-    })
+    this.events;
+    // this._route.params.subscribe((params: Params)=>{
+    //   console.log(params['category'])
+    //   this.category = params['category']
+    //   this.getSport(params['category'])
+    // })
+    this.getSport('football');
   }
   getSport(category){
     this._httpService.getFootball(category).then(data =>{
       console.log(data);
-        this.sport = data['data'];
+        this.events = data['data'];
     })
   }
   onClickDelete(id){

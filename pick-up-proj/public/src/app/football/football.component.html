@@ -21,11 +21,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr><!--INSERT FOR LOOP-->
-                    <td>Dynamic</td>
-                    <td>Data</td>
+                  <tr *ngFor="let event of events"><!--INSERT FOR LOOP-->
+                    <td>{{event.name}}</td>
+                    <td>{{event.capacity}}</td>
                     <td><a href="">Show</a>
-                      <a href="" (click)="onClickDelete(sport._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
+                      <a href="" (click)="onClickDelete(event._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
                     </td>
                   </tr>
                 </tbody>
