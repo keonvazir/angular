@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpService } from '../http.service';
+import { ActivatedRoute, Router, Params } from '@angular/router';
 
 @Component({
   selector: 'app-basketball',
@@ -6,10 +8,25 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./basketball.component.css']
 })
 export class BasketballComponent implements OnInit {
-
-  constructor() { }
+  events: any;
+  category: any;
+  constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
 
   ngOnInit() {
+    this.events;
+    this.getSport('basketball');
   }
+  getSport(category){
+    this._httpService.getFootball(category).then(data =>{
+      console.log(data);
+        this.events = data['data'];
+    })
+  }
+  onClickDelete(id){
+    this._httpService.deleteSportById(id)
+    .then(()=>this.getSport(id))
+    .catch(err=>console.log(err))
+    this._router.navigate(['/sports/basketball'])
+    }
 
 }

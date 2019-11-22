@@ -24,7 +24,7 @@
                             <td>{{event.name}}</td>
                             <td>{{event.capacity}}</td>
                             <td><a href="#">Show</a>
-                              <a href=""><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
+                              <a href="" (click)="onClickDelete(event._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
                             </td>
                           </tr>
                         </tbody>
