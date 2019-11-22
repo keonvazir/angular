@@ -13,12 +13,17 @@
         const roomName = "<%=room%>";
     </script>
     <title>Groupchat</title>
+    <style>
+        .body{
+            background-color: #293E53;
+        }
+    </style>
 </head>
 
-<body>
+<body class="body">
     <div class="container">
-        <div class="container">
-            <h4><u>Conversation Board</u></h4>
+        <div class="container"><br>
+            <h4 class="text-center"><span style="color: #009679"><u>Conversation Board</u></span></h4><br>
             <div id="messages" class="border pl-2 pt-1 overflow-auto" style="height: 300px;">
                 <button class="badge badge-success float-right">new message</button>
             </div>
