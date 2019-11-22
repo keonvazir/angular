@@ -37,7 +37,7 @@ export class HttpService {
     return this._http.put(`/sports_json/edit/${sport._id}`, sport)
   }
   deleteSportById(id){
-    return this._http.delete(`/sports_json/${id}`)
+    return this._http.delete(`/sports_json/${id}`).toPromise()
   }
   getFootball(sport){
     return this._http.get('/sports_json/football', sport).toPromise()

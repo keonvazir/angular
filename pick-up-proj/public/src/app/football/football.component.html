@@ -13,7 +13,7 @@
           <img src="assets/images/football.png" alt="football" style="width:450px; height: 175px;"/><br><br>
           <table class="table table-hover">
                 <thead>
-                    <!--INSERT FOR LOOP-->
+                    
                   <tr>
                     <th scope="col">Event Name</th>
                     <th scope="col">Capacity</th>
@@ -21,11 +21,11 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
+                  <tr><!--INSERT FOR LOOP-->
                     <td>Dynamic</td>
                     <td>Data</td>
                     <td><a href="">Show</a>
-                      <a href=""><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
+                      <a href="" (click)="onClickDelete(sport._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
                     </td>
                   </tr>
                 </tbody>

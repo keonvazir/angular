@@ -26,4 +26,11 @@ category: any;
         this.sport = data['data'];
     })
   }
+  onClickDelete(id){
+    this._httpService.deleteSportById(id)
+    .then(()=>this.getSport(id))
+    .catch(err=>console.log(err))
+    this._router.navigate(['/'])
+    
+    }
 }
