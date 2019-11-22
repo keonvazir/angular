@@ -31,6 +31,5 @@ category: any;
     .then(()=>this.getSport(id))
     .catch(err=>console.log(err))
     this._router.navigate(['/'])
-    
     }
 }
