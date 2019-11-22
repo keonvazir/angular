@@ -8,9 +8,13 @@ import { HttpService } from '../http.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
 // sport: any;
 // id: any;
-  constructor(private _httpService: HttpService) { }
+
+  constructor(private _httpService: HttpService) { 
+    
+  }
 
   ngOnInit() {
     // this.sport;

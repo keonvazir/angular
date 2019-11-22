@@ -12,6 +12,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(bodyParser.urlencoded({
     extended: true
 }));
+app.use(express.json());
 // const rooms = {};
 
 mongoose.set('useFindAndModify', false);
@@ -26,8 +27,8 @@ const UserSchema = new mongoose.Schema({
 
 const SportSchema = new mongoose.Schema({
     name: {type: String, unique: true, minlength: [3, "Sport name must be at least 3 characters. Please try again!"]},
-    location: {type: String, default: '', required: [true, "Must include a location for your Sport!"]},
-    date: {type: Date, required: [true, "must be a valid time!"]},
+    location: {type: String},
+    date: {type: Date},
     capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
     description: {type: String},
     category:{type: String, required: true},
@@ -61,6 +62,19 @@ app.get('/sports_json/:id', (req, res)=>{
     .catch(err => res.json({"result": "Failed", "data": err}))
 
 })
+//// GET ALL USERS ////
+app.get('/users_json', (req, res)=>{
+    User.find()
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
+})
+//// CREATE A USER /////
+app.post('/user_json', (req, res)=>{
+    User.create(req.body)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
+})
+
 ///// CREATE AN Sport /////
 app.post('/sport_json', (req, res)=>{
     console.log(req.body)
@@ -70,7 +84,7 @@ app.post('/sport_json', (req, res)=>{
 })
 
 ///// EDIT AN Sport //////
-app.put('/sports_json/:id', (req, res)=>{
+app.put('/sports_json/edit/:id', (req, res)=>{
     Sport.findByIdAndUpdate(req.params.id, req.body, {runValidators: true, context: 'query'})
     .then(data => res.json({"result": "Success", "data": data}))
     .catch(err => res.json({"result": "Failed", "data": err}))
@@ -82,6 +96,34 @@ app.delete('/sports_json/:id', (req, res)=>{
     .then(data => res.json({"result": "Success", "data": data}))
     .catch(err => res.json({"result": "Failed", "data": err}))
 
+})
+
+///// GET ALL BASKETBALL ////
+app.get('/sports_json/basketball', (req, res)=>{
+    Sport.findOne(req.params.category)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
+})
+
+///// GET ALL FOOTBALL ////
+app.get('/sports_json/football', (req, res)=>{
+    Sport.findOne(req.params.category)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
+})
+
+///// GET ALL SOCCER ////
+app.get('/sports_json/soccer', (req, res)=>{
+    Sport.findOne(req.params.category)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
+})
+
+///// GET ALL VOLLEYBALL ////
+app.get('/sports_json/volleyball', (req, res)=>{
+    Sport.findOne(req.params.category)
+    .then(data => res.json({"result": "Success", "data": data}))
+    .catch(err => res.json({"result": "Failed", "data": err}))
 })
 
 app.all("*", (req, res, next) => {

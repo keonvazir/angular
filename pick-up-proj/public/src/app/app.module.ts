@@ -16,6 +16,8 @@ import { BasketballComponent } from './basketball/basketball.component';
 import { SoccerComponent } from './soccer/soccer.component';
 import { FootballComponent } from './football/football.component';
 import { VolleyballComponent } from './volleyball/volleyball.component';
+
+
 // import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 
 
@@ -42,6 +44,8 @@ import { VolleyballComponent } from './volleyball/volleyball.component';
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
+  
+   
     // SocketIoModule.forRoot(config),
     
    

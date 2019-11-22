@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-create',
@@ -8,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent implements OnInit {
+//name = new FormControl('');
 user: any;
 newSport: any;
 err: any;
@@ -15,15 +17,18 @@ err: any;
 
   ngOnInit() {
     this.newSport = {"name": "", "location": "", "date": "", "capacity":"", "image":"", "description":"", "category": ""};
-    this.user = {"name": "", "level": ""};
+    this.user = {"fullname": "", "level": ""};
     this.err = {};
   }
   addSport(){
+    console.log("TRYING TO ADD SPORT")
+    
     this._httpService.createUser(this.user)
     .then((user)=>{
       this._httpService.createSport(this.newSport, user)
       .then((data)=>{
         if(data['result']=="Failed"){
+          console.log(this.newSport)
           this.err = data['data']['errors']
           console.log(this.err)
         }else{
