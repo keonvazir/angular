@@ -3,7 +3,21 @@
         <p><!--image appears here--></p>
     </div>
     <div class="text-center mt-4">
-        <h1>SHOW PAGE</h1>
-        <h4><!--Show details of sporting event--></h4>
+        <h1>{{ event.name }}</h1>
+        <h4>{{event.location}}</h4><br>
+        
+        <p><u>Capactiy: </u><strong> {{event.capacity}}</strong></p>
+        <h6 style="font-size: small">Description</h6>
+        <div>
+                {{event.description}}
+        </div><br>
+        <h6 style="font-size: small">Location/Date</h6>
+        <div>
+                <p>{{event.location}}</p>
+                <p>{{event.date}}</p>
+        </div>
+        <div>
+           <p>{{event.image}}</p>
+        </div>
     </div>
 </section>

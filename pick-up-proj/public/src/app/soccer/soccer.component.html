@@ -23,7 +23,7 @@
                           <tr *ngFor="let event of events">
                             <td>{{event.name}}</td>
                             <td>{{event.capacity}}</td>
-                            <td><a href="#">Show</a>
+                            <td><a [routerLink]="['/sports/'+ event._id]">Show</a>
                               <a href="" (click)="onClickDelete(event._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
                             </td>
                           </tr>

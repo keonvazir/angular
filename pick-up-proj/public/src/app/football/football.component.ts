@@ -14,11 +14,7 @@ category: any;
 
   ngOnInit() {
     this.events;
-    // this._route.params.subscribe((params: Params)=>{
-    //   console.log(params['category'])
-    //   this.category = params['category']
-    //   this.getSport(params['category'])
-    // })
+   
     this.getSport('football');
   }
   getSport(category){

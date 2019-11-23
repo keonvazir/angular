@@ -31,7 +31,7 @@ export class HttpService {
     return this._http.post('/user_json', user).toPromise()
   }
   getSportById(id){
-    return this._http.get(`/sports_json/${id}`)
+    return this._http.get(`/sports_json/${id}`).toPromise()
   }
   updateSport(sport){
     return this._http.put(`/sports_json/edit/${sport._id}`, sport)
