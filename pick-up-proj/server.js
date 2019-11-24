@@ -32,9 +32,9 @@ const SportSchema = new mongoose.Schema({
     capacity: {type: Number, min:[2, "capacity of Sport must include more than 1 person!"]},
     description: {type: String},
     category:{type: String, required: true},
-    image: {type: String},
+    image: {type: String, default: ""},
     users: [UserSchema]
-}, {timestamps: true})
+}, {timestamps: {createdAt: "created_at", updatedAt: "updated_at"}});
 
 
 
@@ -131,4 +131,4 @@ app.all("*", (req, res, next) => {
     res.sendFile(path.resolve("./public/dist/public/index.html"))
 });
 
-app.listen(7000, () => console.log("listening on port 7000"));
+app.listen(7000, '0.0.0.0', () => console.log("listening on port 7000"));

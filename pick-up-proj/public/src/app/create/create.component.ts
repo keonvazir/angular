@@ -12,13 +12,23 @@ export class CreateComponent implements OnInit {
 //name = new FormControl('');
 user: any;
 newSport: any;
+events: [];
+event: "";
 err: any;
   constructor(private _httpService: HttpService, private _router: Router) { }
 
   ngOnInit() {
+    this.getEventsFromService();
     this.newSport = {"name": "", "location": "", "date": "", "capacity":"", "image":"", "description":"", "category": ""};
     this.user = {"fullname": "", "level": ""};
     this.err = {};
+  }
+  getEventsFromService(){
+    let observable = this._httpService.getAllSports();
+    observable.subscribe((data)=>{
+      console.log(data);
+      this.events = data["event"]
+    });
   }
   addSport(){
     console.log("TRYING TO ADD SPORT")
@@ -34,7 +44,9 @@ err: any;
         }else{
           //should direct to the specific category's main page!
           //***** */
+          
           this._router.navigate([`/sports/${this.newSport.category}`])
+          this.getEventsFromService();
         }
       })
       .catch(err => console.log(err))
