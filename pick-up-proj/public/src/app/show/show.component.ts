@@ -11,7 +11,7 @@ export class ShowComponent implements OnInit {
   event: any;
   eventid: any;
 
-  constructor(private _httpService: HttpService, private _route: ActivatedRoute, private _router: Router) { }
+  constructor(private _httpService: HttpService, private _route: ActivatedRoute, private_router: Router) { }
 
   ngOnInit() {
     this._route.params.subscribe((params: Params)=>{
