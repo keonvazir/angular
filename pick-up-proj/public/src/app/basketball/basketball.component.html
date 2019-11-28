@@ -25,6 +25,7 @@
                             <td>{{event.capacity}}</td>
                             <td><a [routerLink]="['/sports/'+event._id]">Show</a>
                               <a href="" (click)="onClickDelete(event._id)"><span class="text-danger" style="margin-left: 10px;">Delete</span></a>
+                              <a [routerLink]="['/sports/edit/'+ event._id]"><span class="text-warning"style="margin-left: 10px;">Edit</span></a>
                             </td>
                           </tr>
                         </tbody>
