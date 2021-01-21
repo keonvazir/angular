@@ -22,7 +22,7 @@
     "mongoose-unique-validator": "^2.0.3",
     "ngx-socket-io": "^3.0.1",
     "rxjs": "^6.5.3",
-    "socket.io": "^2.3.0",
+    "socket.io": "^2.4.0",
     "startbootstrap-freelancer": "^5.1.3"
   }
 }
